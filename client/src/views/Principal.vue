@@ -1,185 +1,118 @@
 <template>
   <div id="app">
-    <div>
-      <input type="checkbox" id="chkMenu" />
+    <Header />
 
-      <!-- Cabeçalho -->
-      <header>
-        <div class="area-esquerda">
-          <h3>Any Help</h3>
+    <div class="conteudo">
+      <div class="post-it">
+        <div class="draggable bloco">
+
         </div>
-
-        <div class="area-direita">
-          <a href="" class="btn-sair">Sair</a>
-        </div>
-
-        <label for="chkMenu">
-          <i class="fas fa-bars" id="btnMenu"></i>
-        </label>
-      </header>
-
-      <!-- Menu -->
-      <nav>
-        <div class="perfil">
-          <img
-            src="../assets/images/perfil.jpg"
-            alt="Imagem de perfil"
-            class="imagem-perfil"
-          />
-          <h4>Felipe Souza</h4>
-        </div>
-
-        <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-        <a href="#"><i class="fas fa-cogs"></i><span>Componentes</span></a>
-        <a href="#"><i class="fas fa-table"></i><span>Tabelas</span></a>
-        <a href="#"><i class="fas fa-th"></i><span>Formulários</span></a>
-        <a href="#"><i class="fas fa-info-circle"></i><span>Sobre</span></a>
-        <a href="#"
-          ><i class="fas fa-sliders-h"></i><span>Configurações</span></a
-        >
-      </nav>
-      <div class="conteudo"></div>
+        <div class="draggable bloco"></div>
+      </div>
     </div>
+
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-// import Header from "../components/Header";
-// import Footer from "../components/Footer";
+import Header from "../components/Header";
+
 export default {
   name: "Principal",
   components: {
-    // Header,
-    // Footer
+    Header
+  },
+  mounted() {
+    console.log("teste");
+    var Draggable = function(elemento) {
+      var that = this;
+      this.elemento = elemento;
+      this.posX = 0;
+      this.posY = 0;
+      this.top = 0;
+      this.left = 0;
+      this.refMouseUp = function(event) {
+        that.onMouseUp(event);
+      };
+
+      this.refMouseMove = function(event) {
+        that.onMouseMove(event);
+      };
+
+      this.elemento.addEventListener("mousedown", function(event) {
+        that.onMouseDown(event);
+      });
+    };
+
+    Draggable.prototype.onMouseDown = function(event) {
+      this.posX = event.x;
+      this.posY = event.y;
+
+      this.elemento.classList.add("dragging");
+      window.addEventListener("mousemove", this.refMouseMove);
+      window.addEventListener("mouseup", this.refMouseUp);
+    };
+
+    Draggable.prototype.onMouseMove = function(event) {
+      var diffX = event.x - this.posX;
+      var diffY = event.y - this.posY;
+      this.elemento.style.top = this.top + diffY + "px";
+      this.elemento.style.left = this.left + diffX + "px";
+    };
+
+    Draggable.prototype.onMouseUp = function() {
+      this.top = parseInt(this.elemento.style.top.replace(/\D/g, "")) || 0;
+      this.left = parseInt(this.elemento.style.left.replace(/\D/g, "")) || 0;
+      this.elemento.classList.remove("dragging");
+      window.removeEventListener("mousemove", this.refMouseMove);
+      window.removeEventListener("mouseup", this.refMouseUp);
+    };
+
+    var draggables = document.querySelectorAll(".draggable");
+    console.log(draggables);
+    [].forEach.call(draggables, function(draggable) {
+      new Draggable(draggable);
+    });
   }
 };
 </script>
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-}
 
-header {
-  background-color: #22242a;
-  width: 100%;
-  height: 30px;
-  padding: 20px;
-  position: fixed;
-}
-
-.area-esquerda h3 {
-  color: #fff;
-  margin: 0;
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.btn-sair {
-  color: #fff;
-  text-decoration: none;
-  float: right;
-  margin-right: 40px;
-  margin-top: -30px;
-  background-color: #19b3d3;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 2px;
-  padding: 5px 15px;
-  transition: 0.3s;
-}
-
-.btn-sair:hover {
-  background-color: #0d9dbb;
-}
-
-nav {
-  background-color: #2f323a;
+.bloco {
+  float: left;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: yellow;
+  box-shadow: 0px 0px 5px black;
   width: 250px;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  margin-top: 70px;
-  padding-top: 30px;
-  transition: 0.3s;
+  height: 300px;
+  background-size: calc(100% - 10px);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.perfil {
-  text-align: center;
+.draggable {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  transition: transform 0.3s linear z-index 0.3 linear;
+  z-index: 0;
 }
 
-.imagem-perfil {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  margin-bottom: 10px;
+.dragging {
+  transform: scale(1.1);
+  z-index: 999;
 }
 
-nav h4 {
-  color: #ccc;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  padding-left: 40px;
-  line-height: 60px;
-  box-sizing: border-box;
-  transition: 0.5s background-color;
-}
-
-nav i {
-  padding-right: 10px;
-  line-height: 60px !important;
-}
-
-nav a:hover {
-  background-color: #19b3d3;
-}
-
-#chkMenu {
-  display: none;
-}
-
-#btnMenu {
-  color: #fff;
-  cursor: pointer;
-  font-size: 20px;
-  position: fixed;
-  left: 300px;
-  top: 25px;
-  transition: 0.3s color;
-}
-
-#btnMenu:hover {
-  color: #0d9dbb;
-}
-
-#chkMenu:checked ~ nav {
-  left: -190px;
-}
-
-#chkMenu:checked ~ nav a {
-  font-size: 20px;
-  margin-left: 170px;
-  width: 80px;
-}
-
-#chkMenu:checked ~ nav a span {
-  display: none;
-}
-
-.conteudo {
-    background: url('../assets/images/fundo.jpg') no-repeat;    
-    background-position: center;
-    height: 100vh;
-    background-size: cover;
+.post-it {
+  background-position: center;
+  height: 100vh;
+  background-size: cover;
+  margin-left: 280px;
+  padding-top: 70px;
+  /* background-color: aqua; */
+    background: url("../assets/images/fundo.jpg") no-repeat;
 }
 
 </style>
