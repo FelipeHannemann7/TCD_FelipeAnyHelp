@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
 
-    <div class="conteudo">
+    <div class="teste">
       <div class="post-it">
         <div class="draggable bloco">
 
@@ -111,8 +111,10 @@ export default {
   background-size: cover;
   margin-left: 280px;
   padding-top: 70px;
-  /* background-color: aqua; */
-    background: url("../assets/images/fundo.jpg") no-repeat;
+}
+
+.teste{
+  /* background-color: #d5efff; */
 }
 
 </style>

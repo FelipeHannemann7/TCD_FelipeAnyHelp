@@ -1,5 +1,6 @@
 <template>
   <div>
+        
     <!-- <div> -->
     <input type="checkbox" id="chkMenu" />
     <!-- Cabeçalho -->
@@ -9,7 +10,7 @@
       </div>
 
       <div class="area-direita">
-        <a href="" class="btn-sair">Sair</a>
+        <a href="/login" class="btn-sair">Sair</a>
       </div>
 
       <label for="chkMenu">
@@ -35,7 +36,7 @@
       <a href="#"><i class="fas fa-sliders-h"></i><span>Perfil</span></a>
     </nav>
 
-    <div class="conteudo"></div>
+    
   </div>
 </template>
 
@@ -51,15 +52,18 @@ body {
 }
 
 header {
-  background-color: #22242a;
+  background-color: #b5e3ff;
   width: 100%;
   height: 30px;
   padding: 20px;
   position: fixed;
+      border-width: 1px;
+    border-style: solid;
+    border-color: #000;
 }
 
 .area-esquerda h3 {
-  color: #fff;
+  color: black;
   margin: 0;
   font-size: 22px;
   font-weight: 900;
@@ -85,14 +89,18 @@ header {
 }
 
 nav {
-  background-color: #2f323a;
+  background-color: #b5e3ff;
   width: 250px;
   height: 100%;
   left: 0;
   position: fixed;
-  margin-top: 70px;
+  margin-top: 71px;
   padding-top: 30px;
   transition: 0.3s;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    /* border-top-color: #94ccf0; */
 }
 
 .perfil {
@@ -107,13 +115,13 @@ nav {
 }
 
 nav h4 {
-  color: #ccc;
+  color: black;
   margin-top: 0;
   margin-bottom: 20px;
 }
 
 nav a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   display: block;
   width: 100%;
