@@ -1,22 +1,22 @@
-const { Post } = require('../models');
+const { Cadastro } = require('../models');
 
 module.exports = {
   /**
-   *  GET localhost:3000/posts - retorna todos os posts que estão no banco de dados
+   *  GET localhost:3000/cadastros - retorna todos os cadastros que estão no banco de dados
    * @param {*} req 
    * @param {*} res 
    */
   async find(req, res) {
     try {
-      const posts = await Post.findAll();
-      return res.send(posts);
+      const cadastros = await Cadastro.findAll();
+      return res.send(cadastros);
     } catch (e) {
       console.error(e);
       return res.status(500).send({});
     }
   },
   /**
-   * GET /posts/:id - retorna um post com o id enviado por parametro
+   * GET /cadastros/:id - retorna um cadastro com o id enviado por parametro
    * @param {*} req 
    * @param {*} res 
    */
@@ -24,7 +24,7 @@ module.exports = {
     return res.send({});
   },
   /**
-   * POST /posts - recebe um json com dados de um post e cria o post
+   * cadastro /cadastros - recebe um json com dados de um cadastro e cria o cadastro
    * @param {*} req 
    * @param {*} res 
    */
@@ -32,15 +32,15 @@ module.exports = {
 
     try {
       console.log(req.body);
-      const post = await Post.create(req.body);
-      return res.status(201).send(post);
+      const cadastro = await Cadastro.create(req.body);
+      return res.status(201).send(cadastro);
     } catch(e) {
       console.error(e);
       res.status(500).send({});
     }
   },
   /**
-   * PUT /posts/:id - Atualiza um post com novas informações
+   * PUT /cadastros/:id - Atualiza um cadastro com novas informações
    * @param {*} req 
    * @param {*} res 
    */
@@ -48,7 +48,7 @@ module.exports = {
     return res.send({});
   },
   /**
-   * DELETE /posts/:id - Remove um post da base de dados
+   * DELETE /cadastros/:id - Remove um cadastro da base de dados
    * @param {*} req 
    * @param {*} res 
    */

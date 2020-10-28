@@ -6,8 +6,7 @@ const sequelize = new Sequelize({
   logging: true // se verdadeiro, vai logar as queries SQL no terminal durante a execução
 });
 
-sequelize.Post = sequelize.import('./Post.js');
-sequelize.PostComent = sequelize.import('./PostComent.js');
+sequelize.Cadastro = sequelize.import('./Cadastro.js');
 
 // Sincroniza as definições de models com o banco de dados
 sequelize.sync();

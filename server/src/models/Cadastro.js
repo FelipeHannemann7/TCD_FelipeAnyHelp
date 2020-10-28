@@ -1,16 +1,16 @@
 
-module.exports = (sequelize, DataType) => sequelize.define('post', {
+module.exports = (sequelize, DataType) => sequelize.define('cadastro', {
   user: {
     type: DataType.INTEGER,
     allowNull: true
   },
-  text: {
+  emal: {
     type: DataType.STRING,
   },
   creationDate: {
     type: DataType.DATE
   },
-  location: {
+  senha: {
     type: DataType.STRING
   }
 })
