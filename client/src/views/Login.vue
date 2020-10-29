@@ -88,6 +88,7 @@
               required="required"
               type="password"
               placeholder="1234"
+              {{cadastros.text}}
             />
           </p>
 
@@ -106,12 +107,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Login",
   components: {
     // Footer
+  },
+  data() {
+    return {
+      cadastros: []
+    };
+  },
+  created() {
+    axios.get('/login').then(response => {
+      console.log('response', response);
+      this.cadastros = response.data;
+    })
   }
-};
+}
 </script>
 
 <style>
