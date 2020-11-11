@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
   logging: true // se verdadeiro, vai logar as queries SQL no terminal durante a execução
 });
 
-sequelize.Cadastro = sequelize.import('./Cadastro.js');
+sequelize.CadastroUser = sequelize.import('./CadastroUser.js');
 
 // Sincroniza as definições de models com o banco de dados
 sequelize.sync();

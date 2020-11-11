@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 // import About from '../views/About.vue';
 import Login from '../views/Login.vue';
 import Principal from '../views/Principal.vue';
+import CadastroUser from '../views/CadastroUser.vue';
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,13 @@ const routes = [
     path: '/principal',
     name: 'Principal',
     component: Principal
+  }, 
+  {
+    path: '/CadastroUser',
+    name: 'CadastroUser',
+    component: CadastroUser
   }
+  
 ]
 
 const router = new VueRouter({

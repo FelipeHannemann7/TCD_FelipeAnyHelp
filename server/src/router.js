@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const CadastroController = require('./controllers/CadastroController');
+const CadastroUserController = require('./controllers/CadastroUserController');
 
 // Implementadas
-router.get('/login', [], CadastroController.find);
-router.post('/login', [], CadastroController.create);
+router.get('/CadastroUser', [], CadastroUserController.find);
+router.post('/CadastroUser', [], CadastroUserController.create);
 
 // TODO
-router.get('/login/:id', [], CadastroController.findOne);
-router.put('/login/:id', [], CadastroController.update);
-router.delete('/login/:id', [], CadastroController.delete);
+router.get('/CadastroUser/:id', [], CadastroUserController.findOne);
+router.put('/CadastroUser/:id', [], CadastroUserController.update);
+router.delete('/CadastroUser/:id', [], CadastroUserController.delete);
 
 module.exports = (app) => app.use(router);

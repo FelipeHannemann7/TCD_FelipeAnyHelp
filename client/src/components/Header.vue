@@ -13,9 +13,7 @@
         <a href="/login" class="btn-sair">Sair</a>
       </div>
 
-      <label for="chkMenu">
-        <i class="fas fa-bars" id="btnMenu"></i>
-      </label>
+
     </header>
 
     <!-- Menu -->
@@ -29,11 +27,11 @@
         <h4>Felipe Souza</h4>
       </div>
 
-      <a href="#"><i class="fas fa-desktop"></i><span>Desabafe</span></a>
-      <a href="#"><i class="fas fa-cogs"></i><span>Vídeos</span></a>
-      <a href="#"><i class="fas fa-table"></i><span>Ajuda Proficional</span></a>
-      <a href="#"><i class="fas fa-info-circle"></i><span>Sobre</span></a>
-      <a href="#"><i class="fas fa-sliders-h"></i><span>Perfil</span></a>
+      <a href="#"><span>Desabafe</span></a>
+      <a href="#"><span>Vídeos</span></a>
+      <a href="#"><span>Ajuda Proficional</span></a>
+      <a href="#"><span>Sobre</span></a>
+      <a href="#"><span>Perfil</span></a>
     </nav>
 
     
@@ -52,9 +50,10 @@ body {
 }
 
 header {
-  background-color: #b5e3ff;
+  background-color: #d0edff;
   width: 100%;
   height: 30px;
+  margin: -10px;
   padding: 20px;
   position: fixed;
       border-width: 1px;
@@ -89,12 +88,12 @@ header {
 }
 
 nav {
-  background-color: #b5e3ff;
+  background-color: #d0edff;
   width: 250px;
   height: 100%;
   left: 0;
   position: fixed;
-  margin-top: 71px;
+  margin-top: 61px;
   padding-top: 30px;
   transition: 0.3s;
     border-width: 1px;
@@ -158,18 +157,18 @@ nav a:hover {
   color: #0d9dbb;
 }
 
-#chkMenu:checked ~ nav {
+/* #chkMenu:checked ~ nav {
   left: -190px;
-}
+} */
 
-#chkMenu:checked ~ nav a {
+/* #chkMenu:checked ~ nav a {
   font-size: 20px;
   margin-left: 170px;
   width: 80px;
-}
+} */
 
-#chkMenu:checked ~ nav a span {
+/* #chkMenu:checked ~ nav a span {
   display: none;
-}
+} */
 
 </style>
