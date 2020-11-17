@@ -27,10 +27,10 @@
         <h4>Felipe Souza</h4>
       </div>
 
-      <a href="#"><span>Desabafe</span></a>
-      <a href="#"><span>Vídeos</span></a>
-      <a href="#"><span>Ajuda Proficional</span></a>
-      <a href="#"><span>Sobre</span></a>
+      <a href="/principal"><span>Desabafe</span></a>
+      <a href="/videos"><span>Vídeos</span></a>
+      <a href="/AjudaPsicologo"><span>Ajuda de Psicólogos</span></a>
+      <a href="/Sobre"><span>Sobre</span></a>
       <a href="#"><span>Perfil</span></a>
     </nav>
 

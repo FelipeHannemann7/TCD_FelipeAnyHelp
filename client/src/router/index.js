@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue';
 import Principal from '../views/Principal.vue';
 import CadastroUser from '../views/CadastroUser.vue';
+import Videos from '../views/Videos.vue';
+import AjudaPsicologo from '../views/AjudaPsicologo.vue';
+import Sobre from '../views/Sobre.vue';
 
 Vue.use(VueRouter)
 
@@ -27,6 +30,21 @@ const routes = [
     path: '/CadastroUser',
     name: 'CadastroUser',
     component: CadastroUser
+  }, 
+  {
+    path: '/Videos',
+    name: 'Videos',
+    component: Videos
+  }, 
+  {
+    path: '/AjudaPsicologo',
+    name: 'AjudaPsicologo',
+    component: AjudaPsicologo
+  }, 
+  {
+    path: '/Sobre',
+    name: 'Sobre',
+    component: Sobre
   }
   
 ]
