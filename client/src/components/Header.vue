@@ -1,22 +1,6 @@
 <template>
   <div>
-        
-    <!-- <div> -->
-    <input type="checkbox" id="chkMenu" />
-    <!-- Cabeçalho -->
-    <header>
-      <div class="area-esquerda">
-        <h3>Any Help</h3>
-      </div>
-
-      <div class="area-direita">
-        <a href="/login" class="btn-sair">Sair</a>
-      </div>
-
-
-    </header>
- 
-    <!-- Menu -->
+    <div class="Cabecalho"></div>
     <nav>
       <div class="perfil">
         <img
@@ -27,7 +11,7 @@
         <h4>Felipe Souza</h4>
       </div>
 
-      <a href="/principal"><span>Desabafe</span></a>
+      <a href="/"><span>Desabafe</span></a>
       <a href="/videos"><span>Vídeos</span></a>
       <a href="/AjudaPsicologo"><span>Ajuda de Psicólogos</span></a>
       <a href="/Sobre"><span>Sobre</span></a>
@@ -49,43 +33,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-header {
-  background-color: #d0edff;
-  width: 100%;
-  height: 30px;
-  margin: -10px;
-  padding: 20px;
-  position: fixed;
-      border-width: 1px;
-    border-style: solid;
-    border-color: #000;
-}
-
-.area-esquerda h3 {
-  color: black;
-  margin: 0;
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.btn-sair {
-  color: #fff;
-  text-decoration: none;
-  float: right;
-  margin-right: 40px;
-  margin-top: -30px;
-  background-color: #19b3d3;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 2px;
-  padding: 5px 15px;
-  transition: 0.3s;
-}
-
-.btn-sair:hover {
-  background-color: #0d9dbb;
-}
 
 nav {
   background-color: #d0edff;
@@ -93,7 +40,7 @@ nav {
   height: 100%;
   left: 0;
   position: fixed;
-  margin-top: 61px;
+  /* margin-top: 61px; */
   padding-top: 30px;
   transition: 0.3s;
     border-width: 1px;

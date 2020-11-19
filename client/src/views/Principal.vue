@@ -2,13 +2,30 @@
   <div id="app">
     <Header />
 
-    <div class="teste">
-      <div class="post-it">
-        <div class="draggable bloco">
-
+    <div class="post-it">
+      <form method="post" @submit.prevent="desabafos">
+        >
+        <div class="CadMsg">
+          <div class="grid row">
+            <div class="col-10">
+              <input
+                class="CadTexto"
+                type="text"
+                v-model="desabafo.MsgDabafo"
+              />
+            </div>
+            <div class="CadButon col-2">
+              <input class="btnDasabafe" type="submit" value="Desabafar" />
+            </div>
+          </div>
         </div>
-        <div class="draggable bloco"></div>
+      </form>
+      <div class="draggable bloco" v-for="principa in principal" v-bind:key="principa.id">
+        <p>
+          {{principa.MsgDabafo}}
+        </p>
       </div>
+      <!-- <div class="draggable bloco"></div> -->
     </div>
 
     <!-- </div> -->
@@ -17,11 +34,36 @@
 
 <script>
 import Header from "../components/Header";
-
+import axios from "axios";
 export default {
   name: "Principal",
   components: {
     Header
+  },
+  data() {
+    return {
+      principal: [],
+      desabafo: {
+        MsgDabafo: null
+      }
+    };
+  },
+  created() {
+    axios.get("/Principal").then(response => {
+      console.log("response", response);
+      this.principal = response.data;
+    });
+  },
+  methods: {
+    desabafos() {
+      const data = {
+        desabafo: this.desabafo
+      };
+      axios.post("/Principal", data).then(response => {
+        console.log("response", response);
+        this.cadastros = response.data;
+      });
+    }
   },
   mounted() {
     console.log("teste");
@@ -76,16 +118,35 @@ export default {
     });
   }
 };
-
-
 </script>
 <style>
+.grid {
+  padding-top: 5px;
+}
 
+.CadTexto {
+  margin-left: 10px;
+  height: 41px;
+  width: 90%;
+}
+
+.btnDasabafe {
+  width: 50px;
+  height: 40px;
+  font-size: 100px;
+  padding-right: 50px;
+}
+
+.CadMsg {
+  background-color: blue;
+  width: 97%;
+  height: 55px;
+}
 .bloco {
   float: left;
   margin: 5px;
   border-radius: 5px;
-  background-color: yellow;
+
   box-shadow: 0px 0px 5px black;
   width: 250px;
   height: 300px;
@@ -115,8 +176,26 @@ export default {
   padding-top: 70px;
 }
 
-.teste{
-  /* background-color: #d5efff; */
+/* Checkbox Hack */
+#toggle-1 {
+  display: none;
 }
 
+label {
+  -webkit-appearance: push-button;
+  -moz-appearance: button;
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* CSS padrão da div */
+#mostra {
+  display: none;
+}
+
+/* CSS quando o checkbox está marcado */
+#toggle-1:checked ~ #mostra {
+  display: block;
+}
 </style>
