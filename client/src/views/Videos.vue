@@ -2,33 +2,15 @@
   <div id="app">
     <Header />
     <div class="EspacoConteudo">
-      <h1> Talvez um Video Possa te Ajudar ?</h1>
+      <h1>Talvez um Video Possa te Ajudar ?</h1>
       <div class="row">
-        <div class="coluna">
+
+        <div class="coluna" v-for="vid in video" v-bind:key="vid.id">
+          
           <div class="card-Video">
-            <iframe
-              src="https://youtube.com/embed/u548qyxRTBU"
-              allowfullscreen
-            ></iframe>
+            <iframe src= ${vid.url} allowfullscreen></iframe>
           </div>
         </div>
-        <div class="coluna">
-          <div class="card-Video">
-            <iframe
-              src="https://youtube.com/embed/u548qyxRTBU"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-                <div class="coluna">
-          <div class="card-Video">
-            <iframe
-              src="https://youtube.com/embed/u548qyxRTBU"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-        
       </div>
     </div>
   </div>
@@ -36,11 +18,22 @@
 
 <script>
 import Header from "../components/Header";
-
+import axios from "axios";
 export default {
-  name: "Principal",
+  name: "Videos",
   components: {
     Header
+  },
+  data() {
+    return {
+      video:[],
+    };
+  },
+  created() {
+    axios.get("/CadastroVideo").then(response => {
+      console.log("response", response);
+      this.video = response.data;
+    });
   }
 };
 </script>

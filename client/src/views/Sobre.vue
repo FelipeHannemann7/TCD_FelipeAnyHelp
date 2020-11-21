@@ -1,17 +1,49 @@
 <template>
   <div id="app">
     <Header />
-
-    <div class="teste">
-      <div class="post-it">
-        <div class="draggable bloco">
-
-        </div>
-        <div class="draggable bloco"></div>
-      </div>
+    <div class="EspacoConteudo">
+      <!-- <h1>AnyHelp</h1> -->
+      <h2 class="titulo">Porque todo Any Precisa de um Help</h2>
+      <p>
+        Plataforma online gratuita de apoio e auxilio psicológico, onde
+        procuramos compreender, ajudar, apoiar, ajudamos acadêmicos a combater
+        os medos, ansiedade, estresse e doenças relacionadas à saúde mental.
+        Auxiliamos nos problemas psicológicos, emocionais e comportamentais. Por
+        meio de técnicas verbais, os profissionais especializados e os
+        voluntários conduzem o usuário para que ele reflita e converse sobre
+        suas questões e problemas – Conversar resolve! Quem são os voluntários
+        que irão nos apoiar nos diálogos? Profissionais, recém formados e
+        acadêmicos de psicologia, psicopedagogos e comunidade em geral que se
+        disponibiliza passar parte do seu precioso tempo conversando com os
+        usuários. Importante relembrar a questão de que todos os voluntários vão
+        necessitar realizar um cadastro em nosso sistema e preencher o termo de
+        responsabilidade e compromisso. Sabe aqueles desabafos nas redes sociais
+        que a galera faz? - Então, a Any Help funciona exatamente desta maneira,
+        você escreve nos post its disponíveis suas angustias de forma anônima e
+        os voluntários irão te ‘’ouvir’’ – ler e responder tentando lhe ajudar
+        da melhor maneira possível. Porque uma plataforma online? Infelizmente,
+        ainda existem muitas barreiras quando o assunto é auxílio psicológico.
+        Uma delas é a questão de vergonha de procurar ajuda, do medo de ser
+        exposto e também por questões financeiras, afinal, é um serviço de alto
+        custo para boa parte dos brasileiros que ganham pouco. Qual é o nosso
+        diferencial? • Contamos com uma equipe de pessoal que estão realmente
+        dispostas ajuda o próximo; • Profissionais qualificados da área irão dar
+        apoio e suporte e também fornecer parcerias; • Plataforma de total
+        anonimato e controle de interação; • Plataforma gratuita; • Produção de
+        conteúdos e serviços de qualidade e confiança; • Fácil acesso ao apoio
+        emocional e contato social; • Engajamento de instituições e estudantes
+        de áreas afins; • Disponibilizaremos uma plataforma eficaz de desabafo e
+        apoio emocional de forma emergente. Muita gente ainda considera que a
+        ajuda psicológica só é necessária em casos de problemas muito graves.
+        Portanto, há um desconhecimento em relação a todos os benefícios deste
+        serviço. Conversar, apoiar e entender o outro é capaz de mudar
+        pensamentos, emoções e comportamentos, promovendo o desenvolvimento de
+        habilidades e tornando o dia a dia da pessoa mais saudável e feliz.
+        Procurar ajuda, é ter a coragem de enfrentar todas as suas questões e
+        buscar por um autoconhecimento que irá torná-lo uma pessoa melhor.
+        Conversar resolve!
+      </p>
     </div>
-
-    <!-- </div> -->
   </div>
 </template>
 
@@ -22,92 +54,11 @@ export default {
   name: "Principal",
   components: {
     Header
-  },
-  mounted() {
-    console.log("teste");
-    var Draggable = function(elemento) {
-      var that = this;
-      this.elemento = elemento;
-      this.posX = 0;
-      this.posY = 0;
-      this.top = 0;
-      this.left = 0;
-      this.refMouseUp = function(event) {
-        that.onMouseUp(event);
-      };
-
-      this.refMouseMove = function(event) {
-        that.onMouseMove(event);
-      };
-
-      this.elemento.addEventListener("mousedown", function(event) {
-        that.onMouseDown(event);
-      });
-    };
-
-    Draggable.prototype.onMouseDown = function(event) {
-      this.posX = event.x;
-      this.posY = event.y;
-
-      this.elemento.classList.add("dragging");
-      window.addEventListener("mousemove", this.refMouseMove);
-      window.addEventListener("mouseup", this.refMouseUp);
-    };
-
-    Draggable.prototype.onMouseMove = function(event) {
-      var diffX = event.x - this.posX;
-      var diffY = event.y - this.posY;
-      this.elemento.style.top = this.top + diffY + "px";
-      this.elemento.style.left = this.left + diffX + "px";
-    };
-
-    Draggable.prototype.onMouseUp = function() {
-      this.top = parseInt(this.elemento.style.top.replace(/\D/g, "")) || 0;
-      this.left = parseInt(this.elemento.style.left.replace(/\D/g, "")) || 0;
-      this.elemento.classList.remove("dragging");
-      window.removeEventListener("mousemove", this.refMouseMove);
-      window.removeEventListener("mouseup", this.refMouseUp);
-    };
-
-    var draggables = document.querySelectorAll(".draggable");
-    console.log(draggables);
-    [].forEach.call(draggables, function(draggable) {
-      new Draggable(draggable);
-    });
   }
 };
-
-
 </script>
 <style>
-
-.bloco {
-  float: left;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: yellow;
-  box-shadow: 0px 0px 5px black;
-  width: 250px;
-  height: 300px;
-  background-size: calc(100% - 10px);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.draggable {
-  position: relative;
-  top: 0px;
-  left: 0px;
-  transition: transform 0.3s linear z-index 0.3 linear;
-  z-index: 0;
-}
-
-.dragging {
-  transform: scale(1.1);
-  z-index: 999;
-}
-
-.post-it {
+.EspacoConteudo {
   background-position: center;
   height: 100vh;
   background-size: cover;
@@ -115,8 +66,27 @@ export default {
   padding-top: 70px;
 }
 
-.teste{
-  /* background-color: #d5efff; */
+.titulo{
+  text-align: center;
 }
 
+.card-Video {
+  height: 300px;
+  width: 300px;
+
+  background-color: black;
+}
+iframe {
+  height: 300px;
+  width: 300px;
+}
+.coluna {
+  float: left;
+  width: 33.33%;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>

@@ -5,6 +5,7 @@ import Login from '../views/Login.vue';
 import Principal from '../views/Principal.vue';
 import CadastroUser from '../views/CadastroUser.vue';
 import Videos from '../views/Videos.vue';
+import CadastroVideo from '../views/CadastroVideo.vue';
 import AjudaPsicologo from '../views/AjudaPsicologo.vue';
 import Sobre from '../views/Sobre.vue';
 
@@ -20,33 +21,38 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
-  }, 
+  },
   {
     path: '/',
     name: 'Principal',
     component: Principal
-  }, 
+  },
   {
     path: '/CadastroUser',
     name: 'CadastroUser',
     component: CadastroUser
-  }, 
+  },
   {
     path: '/Videos',
     name: 'Videos',
     component: Videos
-  }, 
+  },
+  {
+    path: '/CadastroVideo',
+    name: 'CadastroVideo',
+    component: CadastroVideo
+  },
   {
     path: '/AjudaPsicologo',
     name: 'AjudaPsicologo',
     component: AjudaPsicologo
-  }, 
+  },
   {
     path: '/Sobre',
     name: 'Sobre',
     component: Sobre
   }
-  
+
 ]
 
 const router = new VueRouter({

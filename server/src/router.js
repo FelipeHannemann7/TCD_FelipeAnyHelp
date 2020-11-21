@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const CadastroUserController = require('./controllers/CadastroUserController');
+const CadastroVideoController = require('./controllers/CadastroVideoController');
 const PrincipalController = require('./controllers/PrincipalController');
 
 // Implementadas
@@ -12,6 +13,20 @@ router.post('/CadastroUser', [], CadastroUserController.create);
 router.get('/CadastroUser/:id', [], CadastroUserController.findOne);
 router.put('/CadastroUser/:id', [], CadastroUserController.update);
 router.delete('/CadastroUser/:id', [], CadastroUserController.delete);
+
+
+
+
+// Implementadas
+router.get('/CadastroVideo', [], CadastroVideoController.find);
+router.post('/CadastroVideo', [], CadastroVideoController.create);
+
+// TODO
+router.get('/CadastroVideo/:id', [], CadastroVideoController.findOne);
+router.put('/CadastroVideo/:id', [], CadastroVideoController.update);
+router.delete('/CadastroVideo/:id', [], CadastroVideoController.delete);
+
+
 
 
 // Implementadas
