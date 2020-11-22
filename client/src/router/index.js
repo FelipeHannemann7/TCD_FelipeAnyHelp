@@ -7,6 +7,7 @@ import CadastroUser from '../views/CadastroUser.vue';
 import Videos from '../views/Videos.vue';
 import CadastroVideo from '../views/CadastroVideo.vue';
 import AjudaPsicologo from '../views/AjudaPsicologo.vue';
+import CadastroPsicologo from '../views/CadastroPsicologo.vue';
 import Sobre from '../views/Sobre.vue';
 
 Vue.use(VueRouter)
@@ -41,6 +42,11 @@ const routes = [
     path: '/CadastroVideo',
     name: 'CadastroVideo',
     component: CadastroVideo
+  },
+  {
+    path: '/CadastroPsicologo',
+    name: 'CadastroPsicologo',
+    component: CadastroPsicologo
   },
   {
     path: '/AjudaPsicologo',

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const CadastroUserController = require('./controllers/CadastroUserController');
 const CadastroVideoController = require('./controllers/CadastroVideoController');
+const CadastroPsicologoController = require('./controllers/CadastroPsicologoController');
 const PrincipalController = require('./controllers/PrincipalController');
 
 // Implementadas
@@ -26,6 +27,15 @@ router.get('/CadastroVideo/:id', [], CadastroVideoController.findOne);
 router.put('/CadastroVideo/:id', [], CadastroVideoController.update);
 router.delete('/CadastroVideo/:id', [], CadastroVideoController.delete);
 
+
+// Implementadas
+router.get('/CadastroPsicologo', [], CadastroPsicologoController.find);
+router.post('/CadastroPsicologo', [], CadastroPsicologoController.create);
+
+// TODO
+router.get('/CadastroPsicologo/:id', [], CadastroPsicologoController.findOne);
+router.put('/CadastroPsicologo/:id', [], CadastroPsicologoController.update);
+router.delete('/CadastroPsicologo/:id', [], CadastroPsicologoController.delete);
 
 
 

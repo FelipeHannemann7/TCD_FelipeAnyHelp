@@ -8,6 +8,7 @@ const sequelize = new Sequelize({
 
 sequelize.CadastroUser = sequelize.import('./CadastroUser.js');
 sequelize.CadastroVideo = sequelize.import('./CadastroVideo.js');
+sequelize.CadastroPsicologo = sequelize.import('./CadastroPsicologo.js');
 sequelize.Principal = sequelize.import('./Principal.js');
 
 // Sincroniza as definições de models com o banco de dados

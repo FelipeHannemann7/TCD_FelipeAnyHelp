@@ -4,20 +4,22 @@
     <div class="EspacoConteudo">
       <h1>Procure Ajuda Profissional</h1>
 
-      <table border="10">
-        <tr>
-          <td>Nome</td>
-          <td>Cidade</td>
-          <td>Especialização</td>
-          <td>Telefone</td>
-        </tr>
-        <tr>
-          <td>Felipe</td>
-          <td>PAto Brando</td>
-          <td>Teste</td>
-          <td>Teste</td>
-        </tr>
-      </table>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <p>asad</p>
+            
+          </div>
+          <div class="col-sm">
+            Uma de três colunas
+          </div>
+          <div class="col-sm">
+            Uma de três colunas
+          </div>
+        </div>
+        
+        
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +35,19 @@ export default {
 };
 </script>
 <style>
+
+.row{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+}
+
+ .col-sm{
+     border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+}
+
 .EspacoConteudo {
   background-position: center;
   height: 100vh;
@@ -41,7 +56,7 @@ export default {
   padding-top: 70px;
 }
 
-.tr{
+.tr {
   background-color: cadetblue;
 }
 </style>
