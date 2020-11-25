@@ -32,7 +32,7 @@ module.exports = {
 
     try {
       console.log(req.body);
-      const cadastrovideos = await CadastroVideo.create(req.body.user);
+      const cadastrovideos = await CadastroVideo.create(req.body.video);
       return res.status(201).send(cadastrovideos);
     } catch(e) {
       console.error(e);

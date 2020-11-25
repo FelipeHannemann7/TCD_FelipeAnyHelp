@@ -17,7 +17,7 @@
       <a href="/AjudaPsicologo"><span>Ajuda de Psicólogos</span></a>
       <a href="/CadastroPsicologo"><span>Cadastro De Psicólogos</span></a>
       <a href="/Sobre"><span>Sobre</span></a>
-      <a href="#"><span>Perfil</span></a>
+      <a href="/Login"><span>Sair</span></a>
     </nav>
 
     

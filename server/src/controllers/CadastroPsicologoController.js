@@ -32,7 +32,7 @@ module.exports = {
 
     try {
       console.log(req.body);
-      const cadastropsicologos = await CadastroPsicologo.create(req.body.user);
+      const cadastropsicologos = await CadastroPsicologo.create(req.body.psicologo);
       return res.status(201).send(cadastropsicologos);
     } catch(e) {
       console.error(e);

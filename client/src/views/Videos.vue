@@ -8,7 +8,7 @@
         <div class="coluna" v-for="vid in video" v-bind:key="vid.id">
           
           <div class="card-Video">
-            <iframe src= ${vid.url} allowfullscreen></iframe>
+            <iframe v-bind:src= "vid.url" allowfullscreen></iframe>
           </div>
         </div>
       </div>
