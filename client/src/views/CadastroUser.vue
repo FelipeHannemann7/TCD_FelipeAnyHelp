@@ -1,34 +1,61 @@
 <template>
   <div class="container">
     <a class="links" id="paracadastro"></a>
-    <a class="links" id="paracadastrouser"></a>
+    <a class="links" id="paralogin"></a>
 
     <div class="content">
-      <!--FORMULÁRIO DE cadastrouser-->
-      <div id="cadastrouser">
-        <form method="post" @submit.prevent="creatUser">
-          >
+      <!--FORMULÁRIO DE LOGIN-->
+      <div id="login">
+        <form method="post" @submit.prevent="register">
           <h1>Cadastro Usuário</h1>
           <p>
-            <label for="nomeuser_cadastrouser">Nome de Usuário</label>
-            <input type="text" v-model="user.user"/>
+            <label for="email_login">Seu Nome</label>
+            <input
+              type="text"
+              name="user"
+              placeholder="Seu Nome"
+              v-model="credentials.user"
+              required
+              class="login__input"
+            />
+          </p>
+          <p>
+            <label for="email_login">Seu E-mail</label>
+            <input
+              type="text"
+              name="emal"
+              placeholder="Seu E-mail"
+              v-model="credentials.emal"
+              required
+              class="login__input"
+            />
           </p>
 
           <p>
-            <label for="email_cadastrouser">Seu e-mail</label>
-            <input type="text" v-model="user.emal"/>
+            <label for="senha_login">Sua senha</label>
+            <input
+              type="senha"
+              name="senha"
+              v-model="credentials.senha"
+              placeholder="Senha"
+              required
+              class="login__input"
+            />
           </p>
 
           <p>
-            <label for="senha_cadastrouser">Sua senha</label>
-            <input type="text" v-model="user.senha"/>
+            <input
+              type="checkbox"
+              name="manterlogado"
+              id="manterlogado"
+              value=""
+            />
+            <label for="manterlogado">Manter-me logado</label>
           </p>
 
           <p></p>
 
-          <!-- <form action="/Principal" method="get"> -->
-          <input type="submit" value="Logar" />
-          <!-- </form> -->
+          <input type="submit" value="Cadastrar" />
 
           <p class="link">
             Já tem uma conta?
@@ -41,31 +68,30 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
-  name: "CadastroUser",
+  name: "Login",
   components: {
     // Footer
   },
   data() {
     return {
-      user: {
-          name: null,
-          email: null,
-          senha: null
+      credentials: {
+        user: "",
+        emal: "",
+        senha: ""
       }
     };
   },
   methods: {
-    creatUser() {
-       const data = {
-           user: this.user
-       }   
-      axios.post("/CadastroUser", data).then(response => {
-        console.log("response", response);
-        this.cadastros = response.data;
-        this.$router.push('/Login')
-      });
+    async register() {
+      const credentials = this.credentials;
+      try {
+        await this.$store.dispatch("createAuth", credentials);
+        this.$router.push("/Login");
+      } catch (e) {
+        console.log("Login Error on Login Page", e);
+        alert("Não foi possível realizar o Registro");
+      }
     }
   }
 };
@@ -236,7 +262,7 @@ input[type="submit"]:hover {
 }
 
 #cadastro,
-#cadastrouser {
+#login {
   position: absolute;
   top: 0px;
   width: 88%;
@@ -258,7 +284,7 @@ input[type="submit"]:hover {
 }
 
 #paracadastro:target ~ .content #cadastro,
-#paracadastrouser:target ~ .content #cadastrouser {
+#paralogin:target ~ .content #login {
   z-index: 2;
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
@@ -266,9 +292,55 @@ input[type="submit"]:hover {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
 }
-#registro:target ~ .content #cadastrouser,
-#paracadastrouser:target ~ .content #cadastro {
+#registro:target ~ .content #login,
+#paralogin:target ~ .content #cadastro {
   -webkit-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
+}
+
+/*fadeInLeft*/
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*fadeOutLeft*/
+@-webkit-keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 }
 </style>

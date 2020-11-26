@@ -6,27 +6,29 @@
     <div class="content">
       <!--FORMULÁRIO DE LOGIN-->
       <div id="login">
-        <form method="post" action="">
+        <form method="post" @submit.prevent="login">
           <h1>Login</h1>
           <p>
-            <label for="email_login">Seu e-mail</label>
+            <label for="email_login">Seu E-mail</label>
             <input
-              id="email_login"
-              name="email_login"
-              required="required"
               type="text"
-              placeholder="AnyHelp@hAnyHelp.com"
+              name="emal"
+              placeholder="E-mail"
+              v-model="credentials.emal"
+              required
+              class="login__input"
             />
           </p>
 
           <p>
             <label for="senha_login">Sua senha</label>
             <input
-              id="senha_login"
-              name="senha_login"
-              required="required"
-              type="password"
-              placeholder="1234"
+              type="senha"
+              name="senha"
+              v-model="credentials.senha"
+              placeholder="Senha"
+              required
+              class="login__input"
             />
           </p>
 
@@ -42,9 +44,7 @@
 
           <p></p>
 
-          <form action="/Principal" method="get">
-            <input type="submit" value="Logar" />
-          </form>
+          <input type="submit" value="Logar" />
 
           <p class="link">
             Ainda não tem conta?
@@ -52,14 +52,11 @@
           </p>
         </form>
       </div>
-
-
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   name: "Login",
   components: {
@@ -67,16 +64,25 @@ export default {
   },
   data() {
     return {
-      cadastros: []
+      credentials: {
+        emal: "",
+        senha: ""
+      }
     };
   },
-  created() {
-    axios.get('/login').then(response => {
-      console.log('response', response);
-      this.cadastros = response.data;
-    })
+  methods: {
+    async login() {
+      const credentials = this.credentials;
+      try {
+        await this.$store.dispatch("authenticate", credentials);
+        this.$router.push("/");
+      } catch (e) {
+        console.log("Login Error on Login Page", e);
+        alert("Não foi possível realizar o login");
+      }
+    }
   }
-}
+};
 </script>
 
 <style>
